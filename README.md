@@ -1,6 +1,4 @@
-Vale 🙌 entonces te preparo un **README.md actualizado**, pensado para que trabajes con archivos **`.npy`** (que es tu caso real), pero también dejando la opción de `.wav` si en algún momento los usas.
 
-Aquí te va uno presentable:
 
 ---
 
