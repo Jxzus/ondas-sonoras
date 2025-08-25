@@ -64,18 +64,18 @@ Dependencias principales:
 
 ### 🔹 1. Analizar un archivo `.npy`
 
-Ejemplo con `nota_flauta.npy`:
+Ejemplo con `flauta-sol.npy`:
 
 ```bash
-python analisis_audio.py ejemplos/nota_flauta.npy
+python main.py ejemplos/flauta-sol.npy
 ```
 
 ### 🔹 2. Analizar un archivo `.wav`
 
-Ejemplo con `nota_flauta.wav`:
+Ejemplo con `flauta-sol.wav`:
 
 ```bash
-python analisis_audio.py ejemplos/nota_flauta.wav
+python main_audio.py ejemplos/flauta-main.wav
 ```
 
 El programa mostrará:
@@ -108,12 +108,12 @@ El programa mostrará:
 
 ## ✍️ Autor
 
-Proyecto realizado por **Jesús Pérez**
-Estudiante de Física / Ingeniería — 2025
+Proyecto realizado por:
+Juan Pablo Botero Osorio (T00078137)
+Samuel Elias Camargo Meza (T00077993)
+Cristian David Cardeno Gulloso (T00078446)
+Christian David Menco Galvan (T00058749)
+Jesus Andres Perez Fuentes (T00078491)
 
-```
 
----
-
-👉 ¿Quieres que también te prepare el `requirements.txt` exacto para que cualquier persona pueda clonar el repo y correr tu código sin instalar nada manualmente?
 ```
