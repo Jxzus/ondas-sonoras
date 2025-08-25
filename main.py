@@ -7,20 +7,28 @@ import os
 fs = 44100  # Frecuencia de muestreo
 duration = 4  # Duración en segundos
 
+EJEMPLOS_DIR = "ejemplos"
+
 def grabar_y_guardar(nombre_archivo):
+    if not os.path.exists(EJEMPLOS_DIR):
+        os.makedirs(EJEMPLOS_DIR)
+    ruta = os.path.join(EJEMPLOS_DIR, nombre_archivo)
     print("Grabando...")
     audio = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='float64')
     sd.wait()
     print("Grabación finalizada.")
-    np.save(nombre_archivo, audio)
-    print(f"Grabación guardada como {nombre_archivo}.npy")
+    np.save(ruta, audio)
+    print(f"Grabación guardada como {ruta}")
     return audio
 
 def cargar_grabacion(nombre_archivo):
-    return np.load(nombre_archivo)
+    ruta = os.path.join(EJEMPLOS_DIR, nombre_archivo)
+    return np.load(ruta)
 
 def listar_grabaciones():
-    return [f for f in os.listdir() if f.endswith('.npy')]
+    if not os.path.exists(EJEMPLOS_DIR):
+        return []
+    return [f for f in os.listdir(EJEMPLOS_DIR) if f.endswith('.npy')]
 
 while True:
     print("\nOpciones de grabación:")
@@ -30,12 +38,14 @@ while True:
     op = input("Opción: ")
     if op == "1":
         nombre = input("Nombre para guardar la grabación: ")
-        audio = grabar_y_guardar(nombre + ".npy")
+        if not nombre.endswith(".npy"):
+            nombre += ".npy"
+        audio = grabar_y_guardar(nombre)
         break
     elif op == "2":
         grabaciones = listar_grabaciones()
         if not grabaciones:
-            print("No hay grabaciones guardadas.")
+            print("No hay grabaciones guardadas en la carpeta 'ejemplos'.")
             continue
         print("Grabaciones disponibles:")
         for i, g in enumerate(grabaciones):
