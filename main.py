@@ -76,8 +76,14 @@ mask = frequencies > 0
 # --- Frecuencia dominante ---
 dominant_freq = frequencies[mask][np.argmax(np.abs(spectrum[mask]))]
 print(f"Frecuencia dominante: {dominant_freq:.2f} Hz")
-print(f"Periodo: {1/dominant_freq:.4f} s")
-print(f"Frecuencia angular: {2*np.pi*dominant_freq:.2f} rad/s")
+
+# --- Periodo ---
+periodo = 1 / dominant_freq
+print(f"Periodo: {periodo:.4f} s")
+
+# --- Frecuencia angular ---
+frecuencia_angular = 2 * np.pi * dominant_freq
+print(f"Frecuencia angular: {frecuencia_angular:.2f} rad/s")
 
 # --- Reconstruir onda seno usando la frecuencia dominante ---
 A = np.max(audio)  # Amplitud aprox
@@ -94,9 +100,16 @@ def mostrar_menu():
     print("5. Reproducir audio")
     print("0. Salir")
 
+def mostrar_info():
+    print(f"\nFrecuencia dominante: {dominant_freq:.2f} Hz")
+    print(f"Periodo: {periodo:.4f} s")
+    print(f"Frecuencia angular: {frecuencia_angular:.2f} rad/s")
+
 while True:
     mostrar_menu()
     opcion = input("Opción: ")
+    if opcion in ["1", "2", "3", "4", "5"]:
+        mostrar_info()
     if opcion == "1":
         plt.figure(figsize=(10,4))
         plt.plot(t, audio)
